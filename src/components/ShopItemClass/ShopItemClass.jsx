@@ -1,4 +1,6 @@
 import { Component } from 'react';
+// import './image/item-black.jpg';
+import './main.css'
 
 const item = {
     brand: 'Tiger of Sweden',
@@ -13,9 +15,24 @@ const item = {
 export default class ShopItemClass extends Component {
     render() {
         return (
-        <article>
-            ShopItemClass
-        </article>
-        )
+            <article>
+                <div class='main-content'>
+                    <h2>{item.brand}</h2>
+                    <h1>{item.title}</h1>
+                    <h3>{item.description}</h3>
+                    <div class='description'>
+                        {item.descriptionFull}
+                    </div>
+                    <div class='highlight-window mobile'>
+                        <div class='highlight-overlay'></div>
+                    </div>
+                    <div class='divider'></div>
+                    <div class='purchase-info'>
+                        <div class='price'>{item.currency}{item.price}</div>
+                        <button>Добавить в корзину</button>
+                    </div>
+                </div>
+            </article>
+        );
     }
 }
