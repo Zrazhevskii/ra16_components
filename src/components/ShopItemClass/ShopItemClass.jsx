@@ -1,34 +1,27 @@
-import { Component } from 'react';
-// import './image/item-black.jpg';
-import './main.css'
+import React from 'react';
+import './main.css';
+import PropTypes from 'prop-types';
 
-const item = {
-    brand: 'Tiger of Sweden',
-    title: 'Leonard coat',
-    description: 'Minimalistic coat in cotton-blend',
-    descriptionFull:
-        "Men's minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.",
-    price: 399,
-    currency: '£',
-};
-
-export default class ShopItemClass extends Component {
+export default class ShopItemClass extends React.Component {
     render() {
+        const { brand, title, description, descriptionFull, price, currency } =
+            this.props.item;
         return (
             <article>
-                <div class='main-content'>
-                    <h2>{item.brand}</h2>
-                    <h1>{item.title}</h1>
-                    <h3>{item.description}</h3>
-                    <div class='description'>
-                        {item.descriptionFull}
+                <div className='main-content'>
+                    <h2>{brand}</h2>
+                    <h1>{title}</h1>
+                    <h3>{description}</h3>
+                    <div className='description'>{descriptionFull}</div>
+                    <div className='highlight-window mobile'>
+                        <div className='highlight-overlay'></div>
                     </div>
-                    <div class='highlight-window mobile'>
-                        <div class='highlight-overlay'></div>
-                    </div>
-                    <div class='divider'></div>
-                    <div class='purchase-info'>
-                        <div class='price'>{item.currency}{item.price}</div>
+                    <div className='divider'></div>
+                    <div className='purchase-info'>
+                        <div className='price'>
+                            {currency}
+                            {price}
+                        </div>
                         <button>Добавить в корзину</button>
                     </div>
                 </div>
@@ -36,3 +29,7 @@ export default class ShopItemClass extends Component {
         );
     }
 }
+
+ShopItemClass.propTypes = {
+    item: PropTypes.object.isRequired,
+};
